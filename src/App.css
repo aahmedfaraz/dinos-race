@@ -1,0 +1,40 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  position: relative;
+  width: 100vw !important;
+  height: 100vh !important;
+  overflow: hidden;
+  background: linear-gradient(
+    dodgerblue 0%,
+    skyblue 75%,
+    rgb(0, 189, 0) 75%,
+    rgb(169, 255, 169)
+  );
+}
+
+.animated-object {
+  position: absolute;
+}
+
+.static-object {
+  position: absolute;
+}
+
+#plane {
+  transform: translate(-50%, -50%) rotateY(180deg);
+  animation: planeIn 2500ms ease;
+}
+
+@keyframes planeIn {
+  from {
+    transform: translate(-110vh, -50%) rotateY(180deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotateY(180deg);
+  }
+}
