@@ -1,7 +1,11 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useContext } from 'react';
 import PropTypes from 'prop-types';
+// Context
+import globalContext from '../../context/global/globalContext';
 
-const AnimatedObject = ({ id, zIndex, src, height, width, bottom, delay, duration ,flipVertically, flipHorizontally, playbackRate }) => {
+const AnimatedObject = ({ id, zIndex, src, height, width, bottom, delay, duration ,flipVertically, flipHorizontally }) => {
+
+    const {getAndStartObjectAnimations} = useContext(globalContext);
 
     const keyframes = [
         {transform: `translateX(calc(100vw + ${width}vw)) ${flipVertically?'rotateY(180deg)':''} ${flipHorizontally?'rotateX(180deg)':''}`},
@@ -12,14 +16,13 @@ const AnimatedObject = ({ id, zIndex, src, height, width, bottom, delay, duratio
         duration: duration,
         delay: delay,
         iterations: 'Infinity',
-        playbackRate: playbackRate
+        playbackRate: 1
     }
 
     useEffect(() => {
-        const dino = document.getElementById(id);
-        dino.animate(keyframes, options);
+        getAndStartObjectAnimations(id, keyframes, options);
         // eslint-disable-next-line
-    }, [playbackRate])
+    }, [])
 
     return (
         <img
@@ -48,8 +51,7 @@ AnimatedObject.propTypes = {
     delay: PropTypes.number.isRequired,
     duration: PropTypes.number.isRequired,
     flipVertically: PropTypes.bool.isRequired,
-    flipHorizontally: PropTypes.bool.isRequired,
-    playbackRate: PropTypes.number.isRequired
+    flipHorizontally: PropTypes.bool.isRequired
 }
 
 export default AnimatedObject;

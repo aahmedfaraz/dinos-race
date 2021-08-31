@@ -17,10 +17,13 @@ body {
   );
 }
 
-.animated-object {
-  position: absolute;
+@media (max-width: 400px) {
+  body {
+    padding-top: 20px;
+  }
 }
 
+.animated-object,
 .static-object {
   position: absolute;
 }
@@ -37,4 +40,41 @@ body {
   to {
     transform: translate(-50%, -50%) rotateY(180deg);
   }
+}
+
+p {
+  color: white !important;
+}
+
+.speedBtn {
+  position: relative;
+}
+
+.speed {
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translate(80%, -50%);
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(56, 56, 56, 0.2);
+  border-radius: 10px;
+}
+
+.infoButton {
+  position: absolute !important;
+  top: 0 !important;
+  right: 0 !important;
+  margin: 5px !important;
+}
+
+.card-content p {
+  color: black !important;
+}
+
+.icon {
+  width: 50px;
 }
